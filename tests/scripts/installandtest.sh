@@ -16,12 +16,16 @@ TESTS_REGEX=${TESTS_REGEX:-"basictests"}
 ODHPROJECT=${ODHPROJECT:-"opendatahub"}
 SERVICE_IMAGE=${SERVICE_IMAGE:-"quay.io/trustyai/trustyai-service:latest"}
 OPERATOR_IMAGE=${OPERATOR_IMAGE:-"quay.io/trustyai/trustyai-service-operator:latest"}
+LMES_DRIVER_IMAGE=${LMES_DRIVER_IMAGE:-"quay.io/trustyai/ta-lmes-driver:latest"}
+LMES_JOB_IMAGE=${LMES_JOB_IMAGE:-"quay.io/trustyai/ta-lmes-job:latest"}
 
 export ODHPROJECT
 export LOCAL
 export TEARDOWN
 export SERVICE_IMAGE
 export OPERATOR_IMAGE
+export LMES_DRIVER_IMAGE
+export LMES_JOB_IMAGE
 
 echo "OCP version info"
 echo `oc version`

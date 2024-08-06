@@ -28,6 +28,8 @@ TEARDOWN?=false
 
 SERVICE_IMAGE?=quay.io/trustyai/trustyai-service:latest
 OPERATOR_IMAGE?=quay.io/trustyai/trustyai-service-operator:latest
+LMES_DRIVER_IMAGE?=quay.io/trustyai/ta-lmes-driver:latest
+LMES_JOB_IMAGE?=quay.io/trustyai/ta-lmes-job:latest
 
 all: test
 test: build run clean
@@ -43,6 +45,7 @@ run:
 		-e OPENSHIFT_TESTUSER_NAME="$(OPENSHIFT_TESTUSER_NAME)" -e OPENSHIFT_TESTUSER_PASS="$(OPENSHIFT_TESTUSER_PASS)" -e OPENSHIFT_TESTUSER_LOGIN_PROVIDER=$(OPENSHIFT_TESTUSER_LOGIN_PROVIDER) -e ARTIFACT_DIR=$(ARTIFACT_DIR) \
 		-e LOCAL=$(LOCAL) -e TEARDOWN=$(TEARDOWN) \
 		-e SERVICE_IMAGE=$(SERVICE_IMAGE) -e OPERATOR_IMAGE=$(OPERATOR_IMAGE)  \
+		-e LMES_DRIVER_IMAGE=$(LMES_DRIVER_IMAGE) -e LMES_JOB_IMAGE=$(LMES_JOB_IMAGE)  \
 		-it -v ${LOCAL_ARTIFACT_DIR}/:$(ARTIFACT_DIR):z -v /tmp/tests-kubeconfig:/tmp/kubeconfig:z $(IMAGE)
 
 clean:
